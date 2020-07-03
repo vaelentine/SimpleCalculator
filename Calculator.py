@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Calculator:
-       
+    
     def add(self, x, y):
         return round(x + y, 12) #floating point precision
 
@@ -11,3 +11,7 @@ class Calculator:
     
     def multiply(self, x, y):
         return round(x * y, 12)
+
+    def divide(self, x, y):
+        return round(x / y, 12)
+

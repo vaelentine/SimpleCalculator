@@ -9,7 +9,7 @@ class CalculatorTest(unittest.TestCase):
         (-0.15, -3, -3.15),
         (-1, 1, 0),
         (-1.4, 0.5, -0.9),
-        (-0.4, 0.5, 0.1)
+        (-0.4, 0.5, 0.1),
     ])
     def test_add(self, addend_a, addend_b, result_sum):
         calculator = Calculator()
@@ -21,7 +21,7 @@ class CalculatorTest(unittest.TestCase):
         (-0.15, 3, -3.15),
         (-1, 1, -2),
         (-1.4, 0.5, -1.9),
-        (1.4, 0.5, 0.9)
+        (1.4, 0.5, 0.9),
     ])
     def test_subtract(self, minuend, subtrahend, difference):
         calculator = Calculator()
@@ -33,10 +33,24 @@ class CalculatorTest(unittest.TestCase):
         (4, 1, 4),
         (4, 4, 16),
         (3.3, 3, 9.9),
-        (1.5, -2, -3)
+        (1.5, -2, -3),
     ])
     def test_multiply(self, multiplier, multiplicand, product):
         calculator = Calculator()
         self.assertEqual(calculator.multiply(multiplier, multiplicand), product)
+
+    @parameterized.expand([
+        (1, 1, 1),
+        (2, 1, 2),
+        (4, 2, 2),
+        (6, 2, 3),
+        (3, 2, 1.5),
+        (-4, 2, -2),
+        (0, 1, 0),
+        (9, -2, -4.5),
+        ])   
+    def test_divide(self, dividend, divisor, quotient):
+        calculator = Calculator()
+        self.assertEqual(calculator.divide(dividend, divisor), quotient)
 if __name__ == "__main__":
     unittest.main()
