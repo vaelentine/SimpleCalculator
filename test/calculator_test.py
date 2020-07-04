@@ -14,8 +14,7 @@ class CalculatorTest(unittest.TestCase):
         (-0.4, 0.5, 0.1),
     ])
     def test_add(self, addend_a, addend_b, result_sum):
-        self.calculator.add(addend_a, addend_b)
-        self.assertEqual(self.calculator.result, result_sum)
+        self.assertEqual(self.calculator.add(addend_a, addend_b), result_sum)
 
     @parameterized.expand([
         (0, 1, -1),
