@@ -3,6 +3,8 @@ from parameterized import parameterized
 from Calculator import Calculator
 
 class CalculatorTest(unittest.TestCase):
+    calculator = Calculator()
+    
     @parameterized.expand([
         (0, 1, 1),
         (0.15, 3, 3.15),
@@ -12,8 +14,8 @@ class CalculatorTest(unittest.TestCase):
         (-0.4, 0.5, 0.1),
     ])
     def test_add(self, addend_a, addend_b, result_sum):
-        calculator = Calculator()
-        self.assertEqual(calculator.add(addend_a, addend_b), result_sum)
+        self.calculator.add(addend_a, addend_b)
+        self.assertEqual(self.calculator.result, result_sum)
 
     @parameterized.expand([
         (0, 1, -1),
@@ -24,8 +26,8 @@ class CalculatorTest(unittest.TestCase):
         (1.4, 0.5, 0.9),
     ])
     def test_subtract(self, minuend, subtrahend, difference):
-        calculator = Calculator()
-        self.assertEqual(calculator.subtract(minuend, subtrahend), difference)
+        self.assertEqual(self.calculator.subtract(minuend, subtrahend), difference)
+    
     @parameterized.expand([
         (1, 1, 1),
         (2, 2, 4),
@@ -36,8 +38,7 @@ class CalculatorTest(unittest.TestCase):
         (1.5, -2, -3),
     ])
     def test_multiply(self, multiplier, multiplicand, product):
-        calculator = Calculator()
-        self.assertEqual(calculator.multiply(multiplier, multiplicand), product)
+        self.assertEqual(self.calculator.multiply(multiplier, multiplicand), product)
 
     @parameterized.expand([
         (1, 1, 1),
@@ -50,7 +51,7 @@ class CalculatorTest(unittest.TestCase):
         (9, -2, -4.5),
         ])   
     def test_divide(self, dividend, divisor, quotient):
-        calculator = Calculator()
-        self.assertEqual(calculator.divide(dividend, divisor), quotient)
+        self.assertEqual(self.calculator.divide(dividend, divisor), quotient)
+
 if __name__ == "__main__":
     unittest.main()
